@@ -7,9 +7,8 @@ export const Navbar = () => {
       <h1 className="text-2xl font-bold">My Website</h1>
       <nav>
         <ul className="flex space-x-4">
-          <li><a href="#" className="hover:text-gray-400">Home</a></li>
-          <li><a href="#" className="hover:text-gray-400">About</a></li>
-          <li><a href="#" className="hover:text-gray-400">Contact</a></li>
+          <li><a href="/" className="hover:text-gray-400">Home</a></li>
+          <li><a href="/hd" className="hover:text-gray-400">High Resolution Images</a></li>
         </ul>
       </nav>
     </div>

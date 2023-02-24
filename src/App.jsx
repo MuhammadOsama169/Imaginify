@@ -1,22 +1,29 @@
-import { useState } from 'react'
-import { Cover } from './components/Cover'
-import { ImageResult } from './components/ImageResult'
 import { Navbar } from './components/Navbar'
-import Search from './components/Search'
+import { Home } from './pages/Home'
+import { HdImages } from './pages/HdImages'
+import useAxios from './hooks/useAxios'
+import { createContext } from 'react'
+
+//Creae Context
+export const ImageContext = createContext();
 
 function App() {
 
-  const [listImages, setListImages] =useState([])
-  const [isLoading, setIsLoading] =useState(false);
+const {response, isLoading, error, fetchData} = useAxios(`search/photos?per_page=12page=1&query=random&client_id=Ej-5imFi2CYQ2OZdICwC5ySbN1v7BLCrOy7H6gg8UD4`)
 
-  return (
-    <>
-    <Navbar />
-    <Cover/>
-    <Search setListImages={setListImages} setIsLoading={setIsLoading}/>
-    <ImageResult listImages={listImages} isLoading={isLoading} />
-    </>
-  )
+const value = {
+  response,
+  isLoading,
+  error,
+  fetchData
 }
 
+return (
+    <ImageContext.Provider value={value}>
+      <Navbar />
+      <Home path="/"/>
+      <HdImages path="/HdImages"/>
+    </ImageContext.Provider>
+  )
+}
 export default App

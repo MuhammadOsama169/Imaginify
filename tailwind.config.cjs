@@ -7,7 +7,6 @@ module.exports = {
     extend: {
       colors: {
         redhot: '#FF165D',
-        yellow: '#FDCC49',
       },
 
       backgroundImage: (theme) => ({
@@ -25,7 +24,6 @@ module.exports = {
       fontFamily: {
         playfair: ['Playfair Display', 'serif'],
         opensans: ['Open Sans', 'sans-serif'],
-        nunitosans: ['Nunito Sans', 'sans-serif'],
       },
     },
     screens: {

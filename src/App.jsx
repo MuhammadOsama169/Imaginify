@@ -1,4 +1,4 @@
-import { Navbar } from './components/Navbar'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Home } from './pages/Home'
 import { HdImages } from './pages/HdImages'
 import useAxios from './hooks/useAxios'
@@ -20,9 +20,12 @@ const value = {
 
 return (
     <ImageContext.Provider value={value}>
-      <Navbar />
-      <Home path="/"/>
-      <HdImages path="/HdImages"/>
+      <Router>
+          <Routes>
+          <Route path="/" element={<Home />} />
+            <Route path="/collection" element={<HdImages/>}></Route>
+          </Routes>
+      </Router>
     </ImageContext.Provider>
   )
 }

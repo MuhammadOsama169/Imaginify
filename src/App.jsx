@@ -1,10 +1,9 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Home } from './pages/Home'
-import { HdImages } from './pages/HdImages'
 import useAxios from './hooks/useAxios'
 import { createContext } from 'react'
 
-//Creae Context
+//Create Context
 export const ImageContext = createContext();
 
 function App() {
@@ -22,8 +21,7 @@ return (
     <ImageContext.Provider value={value}>
       <Router>
           <Routes>
-          <Route path="/" element={<Home />} />
-            <Route path="/collection" element={<HdImages/>}></Route>
+            <Route path="/" element={<Home />} />
           </Routes>
       </Router>
     </ImageContext.Provider>

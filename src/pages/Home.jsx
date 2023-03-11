@@ -5,7 +5,8 @@ import { Cover } from "../components/Cover"
 import { ImageResult } from "../components/ImageResult"
 import Search from '../components/Search'
 import { Gallery } from '../components/Gallery'
-import Tags from '../components/Tags'
+import SearchUnsplashed from '../components/SearchUnsplashed'
+import { Images } from '../components/Images'
 
 export const Home = () => {
     
@@ -20,7 +21,8 @@ export const Home = () => {
     <Gallery/>
     <Search setListImages={setListImages} setIsLoading={setIsLoading}/>
     <ImageResult listImages={listImages} isLoading={isLoading} />
-    <Tags/>
+    <SearchUnsplashed/>
+    <Images/>
     </>
   )
 }

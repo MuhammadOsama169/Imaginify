@@ -7,6 +7,7 @@ import Search from '../components/Search'
 import { Gallery } from '../components/Gallery'
 import SearchUnsplashed from '../components/SearchUnsplashed'
 import { Images } from '../components/Images'
+import { Slider } from '../components/Slider'
 
 export const Home = () => {
     
@@ -16,7 +17,8 @@ export const Home = () => {
   return (
     <>
     <Navbar/>
-    <Cover/>
+    {/* <Cover/> */}
+    <Slider/>
     <Card/>
     <Gallery/>
     <Search setListImages={setListImages} setIsLoading={setIsLoading}/>

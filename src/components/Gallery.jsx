@@ -7,7 +7,7 @@ import image4 from '../assets/mexican-face-girl.jfif'
 
 export const Gallery = () => {
   return (
-    <div className="flex flex-col md:flex-row md:gap-5 justify-center">
+    <div className="flex flex-col md:flex-row md:gap-5 justify-center px-[50px] md:px-0">
 
       <div className="md:w-[500px] flex  md:p-0">
         <img className="rounded-xl sm:w-[500px] mx-auto mb-[50px] md:h-full" src={image1}/>

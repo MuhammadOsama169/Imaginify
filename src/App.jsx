@@ -3,12 +3,11 @@ import { Home } from './pages/Home'
 import useAxios from './hooks/useAxios'
 import { createContext } from 'react'
 
-//Create Context
 export const ImageContext = createContext();
 
 function App() {
 
-const {response, isLoading, error, fetchData} = useAxios(`search/photos?per_page=12page=1&query=random&client_id=Ej-5imFi2CYQ2OZdICwC5ySbN1v7BLCrOy7H6gg8UD4`)
+const {response, isLoading, error, fetchData} = useAxios(`search/photos?per_page=12page=1&query=random&client_id=${import.meta.env.VITE_ACCESS_KEY}`)
 
 const value = {
   response,

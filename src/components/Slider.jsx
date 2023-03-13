@@ -9,11 +9,12 @@ import { Autoplay, Pagination, Navigation } from "swiper";
 
 import Img1 from "../assets/dark-women.png";
 import Img3 from "../assets/women-volncano.png";
-import Img4 from "../assets/samurai-on-mars.png";
+import Img4 from "../assets/women-enhanced-face.png";
 import Img5 from "../assets/ship-on-port.png";
 import Img6 from "../assets/girl-listening-music.png";
 import Img7 from "../assets/pixelated-world.png";
 import Img8 from "../assets/cyberpunk.png";
+import Img9 from "../assets/tree-purple.png";
 
 const slides = [
   {
@@ -41,9 +42,14 @@ const slides = [
     imageSrc: Img8,
   },
   {
+    id: 8,
+    imageSrc: Img9,
+  },
+  {
     id: 7,
     imageSrc: Img1,
   },
+  
   
 ]
 export const Slider = () => {

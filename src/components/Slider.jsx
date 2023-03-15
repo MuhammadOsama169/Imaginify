@@ -86,8 +86,8 @@ export const Slider = () => {
           modules={[Autoplay, Pagination, Navigation]}
         >
           
-            {slides.map((slide) => (
-              <SwiperSlide>
+            {slides.map((slide,i) => (
+              <SwiperSlide key={i}>
                 <img className="block w-full h-full object-cover" src={slide.imageSrc} title={slide.title} subtext={slide.subtext}/>
 
                 <motion.div

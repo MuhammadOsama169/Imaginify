@@ -1,13 +1,16 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Home } from './pages/Home'
 import useAxios from './hooks/useAxios'
-import { createContext } from 'react'
+import { createContext, useState } from 'react'
+import { SignInPage} from './components/SignInPage'
 
 export const ImageContext = createContext();
 
 function App() {
 
 const {response, isLoading, error, fetchData} = useAxios(`search/photos?per_page=12page=1&query=random&client_id=${import.meta.env.VITE_ACCESS_KEY}`)
+
+const [userGoogle, setGoogleUser] =useState({})
 
 const value = {
   response,
@@ -16,11 +19,13 @@ const value = {
   fetchData
 }
 
+
 return (
     <ImageContext.Provider value={value}>
       <Router>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home userGoogle={userGoogle}/>} />
+            <Route path="/signUp" element={<SignInPage setGoogleUser={setGoogleUser}/>} />
           </Routes>
       </Router>
     </ImageContext.Provider>

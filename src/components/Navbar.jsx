@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Navbar = () => {
+const Navbar = ({userGoogle}) => {
 
   return (
     <>
@@ -8,6 +8,8 @@ const Navbar = () => {
       <header className="absolute w-full top-0 z-10 py-5 backdrop-filter backdrop-blur-lg text-white">
         <div className="flex justify-between items-center md:px-[50px] ">
           <h1 className="text-2xl font-bold font-playfair ">Imaginify</h1>
+          <h3>{userGoogle.name}</h3>
+          <img src={userGoogle.picture}/>
         </div>
       </header>
     </div>

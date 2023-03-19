@@ -18,40 +18,41 @@ import Img9 from "../assets/tree-purple.png";
 
 const slides = [
   {
-    id: 1,
     imageSrc: Img5,
   },
   {
-    id: 2,
     imageSrc: Img3,
   },
   {
-    id: 3,
     imageSrc: Img4,
   },
   {
-    id: 4,
+
     imageSrc: Img6,
   },
   {
-    id: 5,
+  
     imageSrc: Img7,
   },
   {
-    id: 6,
+
     imageSrc: Img8,
   },
   {
-    id: 8,
+ 
     imageSrc: Img9,
   },
   {
-    id: 7,
+
     imageSrc: Img1,
   },
-  
-  
-]
+];
+
+const slidesList = slides.map((el, index) => {
+  return {id: index, ...el };
+})
+
+
 export const Slider = () => {
   const placeholderText = [
     { type: "heading1", text: "Framer Motion" },
@@ -86,9 +87,9 @@ export const Slider = () => {
           modules={[Autoplay, Pagination, Navigation]}
         >
           
-            {slides.map((slide) => (
-              <SwiperSlide>
-                <img className="block w-full h-full object-cover" src={slide.imageSrc} title={slide.title} subtext={slide.subtext}/>
+            {slidesList.map(({id, imageSrc}) => (
+              <SwiperSlide key={id}>
+                <img className="block w-full h-full object-cover" src={imageSrc}/>
 
                 <motion.div
                 initial={{x:-200}}

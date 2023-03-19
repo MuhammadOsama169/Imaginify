@@ -58,7 +58,7 @@ export const Slider = () => {
     { type: "heading1", text: "Framer Motion" },
     {
       type: "heading2",
-      text: "Animating responsive text!"
+      text: "Animating responsive text"
     }
   ];
 

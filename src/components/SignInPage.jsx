@@ -15,6 +15,7 @@ export const SignInPage = ({setGoogleUser}) => {
     setUser(userObject);
     setGoogleUser(userObject)
     navigate("/");
+    window.localStorage.setItem("isLoggedIn",true)
   }
 
   function handleSignOut(event){
@@ -39,17 +40,6 @@ useEffect( () => {
     <div className=''>
       <img src={background} className=' bg-cover bg-center absolute h-[100vh] w-full' />
       <div id="signinDiv" className='relative flex justify-center items-center align-middle pt-[300px]'></div>
-      {
-        Object.keys(user).lenght != 0 &&
-          <button onClick={(e) => handleSignOut(e)}>Sign Out</button>
-      }
-
-      {user &&
-      <div>
-        <img src={user.picture}/>
-        <h3>{user.name}</h3>
-      </div>
-      }
     </div>
   )
 }

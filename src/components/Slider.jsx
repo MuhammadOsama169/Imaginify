@@ -55,6 +55,13 @@ const slidesList = slides.map((el, index) => {
 
 
 export const Slider = () => {
+  const placeholderText = [
+    { type: "heading1", text: "Framer Motion" },
+    {
+      type: "heading2",
+      text: "Animating responsive text"
+    }
+  ];
 
   return (
     <>

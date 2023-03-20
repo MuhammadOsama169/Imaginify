@@ -15,6 +15,7 @@ import Img6 from "../assets/girl-listening-music.png";
 import Img7 from "../assets/pixelated-world.png";
 import Img8 from "../assets/cyberpunk.png";
 import Img9 from "../assets/tree-purple.png";
+import { SliderHeading } from "./SliderHeading";
 
 const slides = [
   {
@@ -54,21 +55,7 @@ const slidesList = slides.map((el, index) => {
 
 
 export const Slider = () => {
-  const placeholderText = [
-    { type: "heading1", text: "Framer Motion" },
-    {
-      type: "heading2",
-      text: "Animating responsive text!"
-    }
-  ];
 
-  const container = {
-    visible: {
-      transition: {
-        staggerChildren: 0.025
-      }
-    }
-  };
   return (
     <>
       <div className="margin-gap">
@@ -89,28 +76,22 @@ export const Slider = () => {
           
             {slidesList.map(({id, imageSrc}) => (
               <SwiperSlide key={id}>
-                <img className="block w-full h-full object-cover" src={imageSrc}/>
-
-                <motion.div
-                initial={{x:-200}}
-                  animate={{x:0}}
-                  variants={container}
-                  transition={{
-                    duration:1,
-                    delay: 1,
-                  }}
-                >
-                  <div className="absolute md:top-[50%] top-[70%] left-[10%]">
-                    <h1 className="text-2xl md:text-4xl font-bold text-white text-left">UNLOCK YOUR</h1>
-                    <h1 className="text-3xl md:text-6xl font-bold text-redhot text-left">IMAGINATION</h1>
-                    <h1 className="text-s text-white text-left">Get involved with the comminity filled with boundless creativity</h1>
-                  </div>
-                </motion.div>
-
+                    {({ isActive }) => {
+                      if (isActive){   return(
+                        <>
+                        <img className="block w-full h-full object-cover" src={imageSrc}/>
+                          <motion.div
+                          animate={{ opacity: [0, 0.2, 0.8, 1] }}
+                          transition={{ ease: 'easeInOut', duration: 1}}
+                          >
+                            <SliderHeading/>
+                          </motion.div>
+                        </>
+                      )}
+                }}
               </SwiperSlide>
             )
             )}
-
         </Swiper>
       </div>
     </>

@@ -7,7 +7,6 @@ import { Gallery } from '../components/Gallery'
 import SearchUnsplashed from '../components/SearchUnsplashed'
 import { Images } from '../components/Images'
 import { Slider } from '../components/Slider'
-import BasicModal from '../components/BasicModal'
 
 export const Home = ({userGoogle}) => {
     
@@ -21,7 +20,6 @@ export const Home = ({userGoogle}) => {
     <Card/>
     <Gallery/>
     <Search setListImages={setListImages} setIsLoading={setIsLoading}/>
-    <BasicModal/>
     <ImageResult listImages={listImages} isLoading={isLoading} />
     <SearchUnsplashed/>
     <Images/>

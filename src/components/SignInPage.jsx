@@ -1,25 +1,24 @@
 import { useEffect,useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
+import { login } from '../../store/UserSlice'; 
 import jwtDecode from 'jwt-decode';
 import background from '../assets/login-background.jpg'
 
-export const SignInPage = ({setGoogleUser}) => {
+// const userLoggedInStorage = JSON.parse(localStorage.getItem('isLoggedIn' || '[]'))
+
+export const SignInPage = () => {
 
   const [user,setUser] =useState({})
   const navigate = useNavigate();
 
-  function handleCallbackResponse (response){
-    console.log("Encoded JWT ID toke:" + response.credential)
-    var userObject = jwtDecode(response.credential)
-    console.log(userObject);
-    setUser(userObject);
-    setGoogleUser(userObject)
-    navigate("/");
-    window.localStorage.setItem("isLoggedIn",true)
-  }
+  const dispatch = useDispatch();
 
-  function handleSignOut(event){
-    setUser({});
+  function handleCallbackResponse (response){
+    var userObject = jwtDecode(response.credential)
+    setUser(userObject);
+    navigate("/");
+    dispatch(login(({userObject})))
   }
 
 useEffect( () => {
@@ -35,6 +34,10 @@ useEffect( () => {
   )
   google.accounts.id.prompt()
 },[]);  
+
+  // useEffect(()=>{
+  //   window.localStorage.setItem("isLoggedIn", JSON.stringify(user))
+  // },[user])
 
   return (
     <div className=''>

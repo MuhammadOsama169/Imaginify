@@ -62,7 +62,6 @@ export const Slider = () => {
       text: "Animating responsive text"
     }
   ];
-
   return (
     <>
       <div className="margin-gap">

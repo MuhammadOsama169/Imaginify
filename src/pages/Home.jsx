@@ -8,21 +8,22 @@ import SearchUnsplashed from '../components/SearchUnsplashed'
 import { Images } from '../components/Images'
 import { Slider } from '../components/Slider'
 
-export const Home = ({userGoogle}) => {
+export const Home = () => {
     
   const [listImages, setListImages] =useState([])
   const [isLoading, setIsLoading] =useState(false);
+  const [isSearching, setSearch] = useState(true);
 
   return (
     <>
-    <Navbar userGoogle={userGoogle}/>
+    <Navbar/>
     <Slider/>
     <Card/>
     <Gallery/>
     <Search setListImages={setListImages} setIsLoading={setIsLoading}/>
     <ImageResult listImages={listImages} isLoading={isLoading} />
-    <SearchUnsplashed/>
-    <Images/>
+    <SearchUnsplashed setSearch={setSearch}/>
+    <Images isSearching={isSearching}/>
     </>
   )
 }

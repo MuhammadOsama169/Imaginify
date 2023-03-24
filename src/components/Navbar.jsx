@@ -1,13 +1,19 @@
 import React from 'react'
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../store/UserSlice';
 
-const Navbar = ({userGoogle}) => {
+
+const Navbar = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
+  const username = useSelector((state)=>state.user.value)
+  console.log(username.userObject.picture)
+  
   const handleSignOut = () =>{
     navigate('/')
-    window.localStorage.removeItem("isLoggedIn",false)
-    userGoogle({})
+    dispatch(logout({}))
   }
   const handleSignIn = () =>{
     navigate('/signUp')
@@ -21,13 +27,13 @@ const Navbar = ({userGoogle}) => {
             <h1 className="text-2xl font-bold font-playfair">Imaginify</h1>
           </div>
 
-          {userGoogle ? (
+          {username ? (
             <div className='backdrop-filter backdrop-blur-lg flex'>
               <button className="text-md font-bold font-playfair " onClick={handleSignOut}>
                 Sign Out
               </button>
               <img
-                src={userGoogle.picture}
+                src={username.userObject.picture}
                 className="rounded-full h-8 w-8 object-cover ml-4"
               />
             

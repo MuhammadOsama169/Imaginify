@@ -2,17 +2,20 @@ import React from 'react'
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../store/UserSlice';
+import {persistor} from '../../store/store';
 
 
 const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const username = useSelector((state)=>state.user.value)
-  console.log(username.userObject.picture)
+  const username = useSelector((state)=>state.user.userDetails);
+  console.log(username?.picture)
   
   const handleSignOut = () =>{
     navigate('/')
+    // here
+    persistor.purge();
     dispatch(logout({}))
   }
   const handleSignIn = () =>{
@@ -26,14 +29,14 @@ const Navbar = () => {
           <div className='flex mr-auto  '>
             <h1 className="text-2xl font-bold font-playfair">Imaginify</h1>
           </div>
-
+{/* whats wrong with the switch statement */}
           {username ? (
             <div className='backdrop-filter backdrop-blur-lg flex'>
               <button className="text-md font-bold font-playfair " onClick={handleSignOut}>
                 Sign Out
               </button>
               <img
-                src={username.userObject.picture}
+                src={username?.userObject?.picture}
                 className="rounded-full h-8 w-8 object-cover ml-4"
               />
             

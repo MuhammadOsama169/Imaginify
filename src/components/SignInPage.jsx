@@ -1,7 +1,7 @@
 import { useEffect,useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
-import { login } from '../../store/UserSlice'; 
+import { loginSuccess } from '../../store/UserSlice'; 
 import jwtDecode from 'jwt-decode';
 import background from '../assets/login-background.jpg'
 
@@ -9,16 +9,20 @@ import background from '../assets/login-background.jpg'
 
 export const SignInPage = () => {
 
-  const [user,setUser] =useState({})
+  // const [user,setUser] =useState({})
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
   function handleCallbackResponse (response){
+    // How to know if its a success or a failure
+    // Failure, Show an error modal
+    // Success
+
     var userObject = jwtDecode(response.credential)
-    setUser(userObject);
+    // setUser(userObject);
     navigate("/");
-    dispatch(login(({userObject})))
+    dispatch(loginSuccess(userObject));
   }
 
 useEffect( () => {

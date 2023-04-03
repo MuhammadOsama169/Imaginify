@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 export const STATUSES = Object.freeze({
@@ -27,7 +28,7 @@ const photoSlice = createSlice({
       });
   },
 });
-
+// eslint-disable-next-line import/no-default-export
 export default photoSlice.reducer;
 
 export const fetchPhotos = createAsyncThunk('photo/fetch', async () => {

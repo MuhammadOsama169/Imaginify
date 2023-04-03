@@ -1,10 +1,11 @@
+/* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = { isUserLoggedIn: false, userDetails: null };
 
 const userSlice = createSlice({
   name: 'user',
-  initialState: initialState,
+  initialState,
   reducers: {
     loginSuccess: (state, action) => {
       state.isUserLoggedIn = true;
@@ -17,4 +18,5 @@ const userSlice = createSlice({
 });
 
 export const { loginSuccess, logout } = userSlice.actions;
+// eslint-disable-next-line import/no-default-export
 export default userSlice.reducer;

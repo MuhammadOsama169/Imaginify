@@ -12,7 +12,7 @@ export const Card = () => {
       <div className="flex flex-col m-50 md:grid justify-center md:gap-x-[100px] md:grid-cols-[300px_300px_300px] mb-[100px] ">
         <div className="bg-white bg-opacity-20 backdrop-blur-lg rounded drop-shadow-lg p-[50px] md:p-4 ">
           <img
-            className="h-[400px] sm:w-[500px] mx-auto md:w-auto"
+            className="md:h-[400px] sm:w-[500px] mx-auto md:w-auto"
             src={image1}
           />
           <h3 className=" text-xl font-bold text-center pt-5">
@@ -26,7 +26,7 @@ export const Card = () => {
         </div>
         <div className="bg-white bg-opacity-20 backdrop-blur-lg rounded drop-shadow-lg p-[50px] md:p-4">
           <img
-            className="h-[400px] sm:w-[500px] mx-auto md:w-auto"
+            className="md:h-[400px] sm:w-[500px] mx-auto md:w-auto"
             src={image2}
           />
           <h3 className=" text-xl font-bold text-center pt-5">
@@ -41,7 +41,7 @@ export const Card = () => {
         </div>
         <div className="bg-white bg-opacity-20 backdrop-blur-lg rounded drop-shadow-lg p-[50px] md:p-4">
           <img
-            className="h-[400px] sm:w-[500px] mx-auto md:w-auto"
+            className="md:h-[400px] sm:w-[500px] mx-auto md:w-auto"
             src={image3}
           />
           <h3 className=" text-xl font-bold text-center pt-5">

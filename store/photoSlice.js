@@ -35,7 +35,7 @@ export const fetchPhotos = createAsyncThunk('photo/fetch', async () => {
   const res = await fetch(
     `https://api.unsplash.com/photos/?client_id=${
       import.meta.env.VITE_ACCESS_KEY
-    }&per_page=12`
+    }&per_page=100`
   );
   const data = await res.json();
   return data;

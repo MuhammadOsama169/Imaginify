@@ -1,6 +1,7 @@
 const { Configuration, OpenAIApi } = require('openai');
+
 const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: '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',
 });
 const openai = new OpenAIApi(configuration);
 
@@ -19,7 +20,7 @@ const generateImage = async (req, res) => {
       data: image_result,
     });
   } catch (error) {
-    console.log(error);
+    console.log(error.message);
   }
 };
 

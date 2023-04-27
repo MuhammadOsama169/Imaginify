@@ -12,8 +12,9 @@ const Search = ({ setListImages, setIsLoading }) => {
 
     try {
       setIsLoading(true);
-      const response = await fetch('http://localhost:5500/openai/images', {
+      const response = await fetch('http://localhost:3000/openai/images', {
         method: 'POST',
+        mode: 'no-cors',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -65,7 +66,7 @@ const Search = ({ setListImages, setIsLoading }) => {
             ref={inputRef}
             type="text"
             id="message"
-            placeholder="Two Monkeys sitting in first class on a plane, wearing sunglasses and sipping on cocktails. 3D Realistic"
+            placeholder="⚠️ Unfortunately DALL-E image generation is currently experiencing issues ⚠️"
             className="flex flex-col rounded-l-lg indent-2 py-4 rounded-sm placeholder-gray-500 md:w-[800px] px-3 pl-8 outline-none focus:shadow-outline "
           />
 

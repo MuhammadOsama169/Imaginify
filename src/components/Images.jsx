@@ -7,7 +7,6 @@ export const Images = ({ isSearching }) => {
   const [page, setPage] = useState(1);
   const dispatch = useDispatch();
   const { data: photos, status } = useSelector((state) => state?.photo);
-
   useEffect(() => {
     dispatch(fetchPhotos());
   }, []);

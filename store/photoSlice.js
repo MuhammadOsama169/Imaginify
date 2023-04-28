@@ -30,12 +30,11 @@ const photoSlice = createSlice({
 });
 // eslint-disable-next-line import/no-default-export
 export default photoSlice.reducer;
+const apikey = process.env.VITE_UNSPLASHED_ACCESS_KEY;
 
 export const fetchPhotos = createAsyncThunk('photo/fetch', async () => {
   const res = await fetch(
-    `https://api.unsplash.com/photos/?client_id=${
-      import.meta.env.VITE_ACCESS_KEY
-    }&per_page=100`
+    `https://api.unsplash.com/photos/?client_id=${apikey}&per_page=100`
   );
   const data = await res.json();
   return data;

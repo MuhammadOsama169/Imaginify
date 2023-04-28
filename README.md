@@ -1,3 +1,4 @@
+![Logo](/src/assets/imaginify-logo.png)
 🎴🤖Imaginify🤖🎴
 
 Is a web platform that utilizes OpenAI's DALL-E API to generate images based on prompts provided by the user. With the help of the GPT-3's image generation model, the app is capable of producing high-quality, high-definition images based on textual prompts.

@@ -1,18 +1,25 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { logout } from '../../store/UserSlice';
+import { auth } from '../utils/firebase-config';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 const Navbar = () => {
+  //User login credentials
+  const [user, loading] = useAuthState(auth);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const username = useSelector((state) => state?.users?.userDetails);
-
-  const handleSignOut = () => {
+  const handleSignOut = async () => {
     navigate('/signUp');
-    // here
-    dispatch(logout({}));
+    try {
+      await auth.signOut();
+      dispatch(logout({}));
+    } catch (error) {
+      console.log(error);
+    }
   };
   const handleSignIn = () => {
     navigate('/signUp');
@@ -26,7 +33,7 @@ const Navbar = () => {
               <h1 className="text-2xl font-bold font-playfair">Imaginify</h1>
             </div>
 
-            {username || username?.aud ? (
+            {user || user?.uid ? (
               <div className="backdrop-filter backdrop-blur-lg flex">
                 <button
                   className="text-md font-bold font-playfair "
@@ -35,7 +42,7 @@ const Navbar = () => {
                   Sign Out
                 </button>
                 <img
-                  src={username?.photos[0].value}
+                  src={user?.photoURL}
                   className="rounded-full h-8 w-8 object-cover ml-4"
                 />
               </div>

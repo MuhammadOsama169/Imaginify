@@ -1,14 +1,55 @@
-import { Link } from 'react-router-dom';
 import background from '../assets/login-background.jpg';
-
-const google = () => {
-  window.open('http://localhost:5000/auth/google', '_self');
-};
-const github = () => {
-  window.open('http://localhost:5000/auth/github', '_self');
-};
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  FacebookAuthProvider,
+  updateProfile,
+  GithubAuthProvider,
+  signInWithRedirect,
+} from 'firebase/auth';
+import { auth } from '../utils/firebase-config';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const SignInPage = () => {
+  const navigate = useNavigate();
+  //Google Sign in from firebase
+  const googleProvider = new GoogleAuthProvider();
+
+  const GoogleLogin = async () => {
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      navigate('/');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  //Github Sign in from firebase
+  const githubProvider = new GithubAuthProvider();
+
+  const GithubLogin = async () => {
+    try {
+      const result = await signInWithRedirect(auth, githubProvider);
+      navigate('/');
+    } catch (error) {
+      console.log(error);
+      navigate('/');
+    }
+  };
+  //Facebook Sign in from firebase
+  const fbProvider = new FacebookAuthProvider();
+
+  const FacebookLogin = async () => {
+    try {
+      const result = await signInWithPopup(auth, fbProvider);
+      const creantial = await FacebookAuthProvider.credentialFromResult(result);
+      const token = creantial.accessToken;
+      let photoURL = result.user.photoURL + '?height=500&access_token' + token;
+      await updateProfile(auth, currentUser, { photoURL: photoURL });
+      navigate('/');
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="">
       <img
@@ -27,7 +68,7 @@ export const SignInPage = () => {
           "Join our community and create an account today!"
         </h1>
         <button
-          onClick={google}
+          onClick={GoogleLogin}
           type="button"
           className="text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-12 py-3 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2 max-w-[300px]"
         >
@@ -49,7 +90,7 @@ export const SignInPage = () => {
           Sign in with Google
         </button>
         <button
-          onClick={github}
+          onClick={GithubLogin}
           type="button"
           className="text-white bg-[#24292F] hover:bg-[#24292F]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-12 py-3 text-center inline-flex items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 mr-2 mb-2 max-w-[300px]"
         >
